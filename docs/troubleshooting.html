@@ -1,0 +1,272 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Troubleshooting - Azure AD Workload Identity</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="installation.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="installation/managed-clusters.html"><strong aria-hidden="true">1.1.</strong> Managed Clusters</a></li><li class="chapter-item expanded "><a href="installation/self-managed-clusters.html"><strong aria-hidden="true">1.2.</strong> Self-Managed Clusters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="installation/self-managed-clusters/service-account-key-generation.html"><strong aria-hidden="true">1.2.1.</strong> Service Account Key Generation</a></li><li class="chapter-item expanded "><a href="installation/self-managed-clusters/oidc-issuer.html"><strong aria-hidden="true">1.2.2.</strong> OpenID Connect Issuer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="installation/self-managed-clusters/oidc-issuer/discovery-document.html"><strong aria-hidden="true">1.2.2.1.</strong> Discovery Document</a></li><li class="chapter-item expanded "><a href="installation/self-managed-clusters/oidc-issuer/jwks.html"><strong aria-hidden="true">1.2.2.2.</strong> JSON Web Key Sets (JWKS)</a></li></ol></li><li class="chapter-item expanded "><a href="installation/self-managed-clusters/configurations.html"><strong aria-hidden="true">1.2.3.</strong> Configurations</a></li></ol></li><li class="chapter-item expanded "><a href="installation/mutating-admission-webhook.html"><strong aria-hidden="true">1.3.</strong> Mutating Admission Webhook</a></li><li class="chapter-item expanded "><a href="installation/azwi.html"><strong aria-hidden="true">1.4.</strong> Azure AD Workload Identity CLI (azwi)</a></li></ol></li><li class="chapter-item expanded "><a href="quick-start.html"><strong aria-hidden="true">2.</strong> Quick Start</a></li><li class="chapter-item expanded "><a href="concepts.html"><strong aria-hidden="true">3.</strong> Concepts</a></li><li class="chapter-item expanded "><a href="topics.html"><strong aria-hidden="true">4.</strong> Topics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="topics/service-account-labels-and-annotations.html"><strong aria-hidden="true">4.1.</strong> Service Account Labels And Annotations</a></li><li class="chapter-item expanded "><a href="topics/federated-identity-credential.html"><strong aria-hidden="true">4.2.</strong> Federated Identity Credential</a></li><li class="chapter-item expanded "><a href="topics/azwi.html"><strong aria-hidden="true">4.3.</strong> Azure Workload Identity CLI (azwi)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="topics/azwi/serviceaccount-create.html"><strong aria-hidden="true">4.3.1.</strong> azwi serviceaccount create</a></li><li class="chapter-item expanded "><a href="topics/azwi/serviceaccount-delete.html"><strong aria-hidden="true">4.3.2.</strong> azwi serviceaccount delete</a></li><li class="chapter-item expanded "><a href="topics/azwi/jwks.html"><strong aria-hidden="true">4.3.3.</strong> azwi jwks</a></li></ol></li><li class="chapter-item expanded "><a href="topics/self-managed-clusters.html"><strong aria-hidden="true">4.4.</strong> Self-Managed Clusters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="topics/self-managed-clusters/service-account-key-rotation.html"><strong aria-hidden="true">4.4.1.</strong> Service Account Key Rotation</a></li><li class="chapter-item expanded "><a href="topics/self-managed-clusters/examples.html"><strong aria-hidden="true">4.4.2.</strong> Examples</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="topics/self-managed-clusters/examples/kind.html"><strong aria-hidden="true">4.4.2.1.</strong> Kubernetes in Docker (kind)</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="topics/language-specific-examples.html"><strong aria-hidden="true">4.5.</strong> Language-Specific Examples</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="topics/language-specific-examples/azure-identity-sdk.html"><strong aria-hidden="true">4.5.1.</strong> Azure Identity SDK</a></li><li class="chapter-item expanded "><a href="topics/language-specific-examples/msal.html"><strong aria-hidden="true">4.5.2.</strong> Microsoft Authentication Library (MSAL)</a></li></ol></li><li class="chapter-item expanded "><a href="topics/metrics.html"><strong aria-hidden="true">4.6.</strong> Metrics</a></li></ol></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">5.</strong> Frequently Asked Questions</a></li><li class="chapter-item expanded "><a href="troubleshooting.html" class="active"><strong aria-hidden="true">6.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="known-issues.html"><strong aria-hidden="true">7.</strong> Known Issues</a></li><li class="chapter-item expanded "><a href="development.html"><strong aria-hidden="true">8.</strong> Development</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="development/releasing.html"><strong aria-hidden="true">8.1.</strong> Releasing</a></li></ol></li><li class="chapter-item expanded "><a href="contributing.html"><strong aria-hidden="true">9.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="code-of-conduct.html"><strong aria-hidden="true">10.</strong> Code of Conduct</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Azure AD Workload Identity</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/Azure/azure-workload-identity" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="troubleshooting"><a class="header" href="#troubleshooting">Troubleshooting</a></h1>
+<ul>
+<li><a href="#logging">Logging</a>
+<ul>
+<li><a href="#mutating-admission-webhook">Mutating Admission Webhook</a>
+<ul>
+<li><a href="#isolate-errors-from-logs">Isolate errors from logs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#aadsts70021-no-matching-federated-identity-record-found-for-presented-assertion">AADSTS70021: No matching federated identity record found for presented assertion.</a></li>
+<li><a href="#aadsts90061-request-to-external-oidc-endpoint-failed">AADSTS90061: Request to External OIDC endpoint failed.</a></li>
+<li><a href="#workload-pod-doesnt-have-the-azure-specific-environment-variables-and-projected-service-account-token-volume-after-upgrading-to-v100">Workload pod doesn’t have the Azure specific environment variables and projected service account token volume after upgrading to v1.0.0</a></li>
+</ul>
+<p>An overview of a list of components to assist in troubleshooting.</p>
+<h2 id="logging"><a class="header" href="#logging">Logging</a></h2>
+<p>Below is a list of commands you can use to view relevant logs of azure-workload-identity components.</p>
+<h3 id="mutating-admission-webhook"><a class="header" href="#mutating-admission-webhook">Mutating Admission Webhook</a></h3>
+<p>To get the logs of the mutating admission webhook, run the following command:</p>
+<pre><code class="language-bash">kubectl logs -n azure-workload-identity-system -l app=workload-identity-webhook
+</code></pre>
+<h4 id="isolate-errors-from-logs"><a class="header" href="#isolate-errors-from-logs">Isolate errors from logs</a></h4>
+<p>You can use <code>grep ^E</code> and <code>--since</code> flag from kubectl to isolate any errors occurred after a given duration.</p>
+<pre><code class="language-bash">kubectl logs -n azure-workload-identity-system -l app=workload-identity-webhook --since=1h | grep ^E
+</code></pre>
+<blockquote>
+<p>It is always a good idea to include relevant logs from the webhook when opening a new <a href="https://github.com/Azure/azure-workload-identity/issues/new">issue</a></p>
+</blockquote>
+<h2 id="aadsts70021-no-matching-federated-identity-record-found-for-presented-assertion"><a class="header" href="#aadsts70021-no-matching-federated-identity-record-found-for-presented-assertion">AADSTS70021: No matching federated identity record found for presented assertion.</a></h2>
+<pre><code>token_credential.go:70] &quot;failed to acquire token&quot; err=&quot;FromAssertion(): http call(https://login.microsoftonline.com//{tenant-id}//oauth2/v2.0/token)(POST) error: reply status code was 400:\n{\&quot;error\&quot;:\&quot;invalid_request\&quot;,\&quot;error_description\&quot;:\&quot;AADSTS70021: No matching federated identity record found for presented assertion. Assertion Issuer: 'https://oidc.prod-aks.azure.com/XXXXXX/'. Assertion Subject: 'system:serviceaccount:default:workload-identity-sa'. Assertion Audience: 'api://AzureADTokenExchange'.\\r\\nTrace ID: b0f62116-10b6-4a73-bdb2-281524404e00\\r\\nCorrelation ID: 4a42e576-85bc-46ae-b7e3-b52cb8958917\\r\\nTimestamp: 2022-01-20 22:54:42Z\&quot;,\&quot;error_codes\&quot;:[70021],\&quot;timestamp\&quot;:\&quot;2022-01-20 22:54:42Z\&quot;,\&quot;trace_id\&quot;:\&quot;b0f62116-10b6-4a73-bdb2-281524404e00\&quot;,\&quot;correlation_id\&quot;:\&quot;4a42e576-85bc-46ae-b7e3-b52cb8958917\&quot;,\&quot;error_uri\&quot;:\&quot;https://login.microsoftonline.com/error?code=70021\&quot;}&quot;
+E0120 22:55:12.472912       1 token_credential.go:70] &quot;failed to acquire token&quot; err=&quot;FromAssertion(): http call(https://login.microsoftonline.com/{tenant-id}/oauth2/v2.0/token)(POST) error: reply status code was 400:\n{\&quot;error\&quot;:\&quot;invalid_request\&quot;,\&quot;error_description\&quot;:\&quot;AADSTS70021: No matching federated identity record found for presented assertion. Assertion Issuer: 'https://oidc.prod-aks.azure.com/XXXXXX/'. Assertion Subject: 'system:serviceaccount:default:workload-identity-sa'. Assertion Audience: 'api://AzureADTokenExchange'.\\r\\nTrace ID: 8f29172d-bf0d-4165-9d86-816665612d00\\r\\nCorrelation ID: 472f3de0-666f-411e-8d4c-cd46b6d6db26\\r\\nTimestamp: 2022-01-20 22:55:12Z\&quot;,\&quot;error_codes\&quot;:[70021],\&quot;timestamp\&quot;:\&quot;2022-01-20 22:55:12Z\&quot;,\&quot;trace_id\&quot;:\&quot;8f29172d-bf0d-4165-9d86-816665612d00\&quot;,\&quot;correlation_id\&quot;:\&quot;472f3de0-666f-411e-8d4c-cd46b6d6db26\&quot;,\&quot;error_uri\&quot;:\&quot;https://login.microsoftonline.com/error?code=70021\&quot;}&quot;
+</code></pre>
+<p>If you encounter the error above, it means that the issuer of the service account token does not match the issuer you defined in the federated identity credential. In the case of an AKS cluster with OIDC issuer enabled, the most common cause is when the user is missing the trailing <code>/</code> when creating the federated identity credential (e.g. <code>https://oidc.prod-aks.azure.com/XXXXXX</code> vs <code>https://oidc.prod-aks.azure.com/XXXXXX/</code>).</p>
+<p>You can follow <a href="./installation/managed-clusters.html#steps-to-get-the-oidc-issuer-url-from-a-generic-managed-cluster">this guide</a> on how to get the token issuer of your cluster.</p>
+<h2 id="aadsts90061-request-to-external-oidc-endpoint-failed"><a class="header" href="#aadsts90061-request-to-external-oidc-endpoint-failed">AADSTS90061: Request to External OIDC endpoint failed.</a></h2>
+<pre><code> ---&gt; MSAL.NetCore.4.39.0.0.MsalServiceException:
+        ErrorCode: invalid_request
+Microsoft.Identity.Client.MsalServiceException: AADSTS90061: Request to External OIDC endpoint failed.
+Trace ID: 86c81de3-efbd-4c0f-854d-cb8f329e5b00
+Correlation ID: a92568a5-cc37-4136-ad4d-1ba82988abc2
+Timestamp: 2022-10-21 04:36:48Z
+   at Microsoft.Identity.Client.Internal.Requests.RequestBase.HandleTokenRefreshErrorAsync(MsalServiceException e, MsalAccessTokenCacheItem cachedAccessTokenItem)
+   at Microsoft.Identity.Client.Internal.Requests.ClientCredentialRequest.ExecuteAsync(CancellationToken cancellationToken)
+   at Microsoft.Identity.Client.Internal.Requests.RequestBase.RunAsync(CancellationToken cancellationToken)
+   at Microsoft.Identity.Client.ApiConfig.Executors.ConfidentialClientExecutor.ExecuteAsync(AcquireTokenCommonParameters commonParameters, AcquireTokenForClientParameters clientParameters, CancellationToken cancellationToken)
+   at Azure.Identity.AbstractAcquireTokenParameterBuilderExtensions.ExecuteAsync[T](AbstractAcquireTokenParameterBuilder`1 builder, Boolean async, CancellationToken cancellationToken)
+   at Azure.Identity.MsalConfidentialClient.AcquireTokenForClientCoreAsync(String[] scopes, String tenantId, Boolean async, CancellationToken cancellationToken)
+   at Azure.Identity.MsalConfidentialClient.AcquireTokenForClientAsync(String[] scopes, String tenantId, Boolean async, CancellationToken cancellationToken)
+   at Azure.Identity.ClientAssertionCredential.GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)
+        StatusCode: 400
+        ResponseBody: {&quot;error&quot;:&quot;invalid_request&quot;,&quot;error_description&quot;:&quot;AADSTS90061: Request to External OIDC endpoint failed.\r\nTrace ID: 86c81de3-efbd-4c0f-854d-cb8f329e5b00\r\nCorrelation ID: a92568a5-cc37-4136-ad4d-1ba82988abc2\r\nTimestamp: 2022-10-21 04:36:48Z&quot;,&quot;error_codes&quot;:[90061],&quot;timestamp&quot;:&quot;2022-10-21 04:36:48Z&quot;,&quot;trace_id&quot;:&quot;86c81de3-efbd-4c0f-854d-cb8f329e5b00&quot;,&quot;correlation_id&quot;:&quot;a92568a5-cc37-4136-ad4d-1ba82988abc2&quot;}
+...
+</code></pre>
+<p>If you encounter the error above, it means the OIDC issuer endpoint is not exposed to the internet or is inaccessible. You can verify this by running the following commands to check if the endpoints are accessible:</p>
+<pre><code class="language-bash">export SERVICE_ACCOUNT_ISSUER=&quot;&lt;your service account issuer url&gt;&quot; # see section 1.1 on how to get the service account issuer url
+
+# check if the OIDC issuer endpoint is accessible
+curl ${SERVICE_ACCOUNT_ISSUER}/.well-known/openid-configuration
+curl ${SERVICE_ACCOUNT_ISSUER}/openid/v1/jwks
+</code></pre>
+<h2 id="workload-pod-doesnt-have-the-azure-specific-environment-variables-and-projected-service-account-token-volume-after-upgrading-to-v100"><a class="header" href="#workload-pod-doesnt-have-the-azure-specific-environment-variables-and-projected-service-account-token-volume-after-upgrading-to-v100">Workload pod doesn’t have the Azure specific environment variables and projected service account token volume after upgrading to v1.0.0</a></h2>
+<p>As of v1.0.0 release, the azure-workload-identity mutating admission webhook is defaulting to using <code>failurePolicy: Fail</code> instead of <code>Ignore</code>. With this change, we have added an <a href="https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#matching-requests-objectselector">object selector</a> in the configuration to only intercept and mutate pods that have the <code>azure.workload.identity/use: &quot;true&quot;</code> label. This change reduces the latency impact of the webhook and prevents workload pods that require the injected environment variables and projected service account token volume from starting in an unexpected state. Refer to <a href="https://github.com/Azure/azure-workload-identity/issues/601">issue</a> for more details.</p>
+<p>If you are upgrading from a previous version of the azure-workload-identity, you will need to add the <code>azure.workload.identity/use: &quot;true&quot;</code> label to your workload pods to ensure that the mutating admission webhook is able to inject the required environment variables and projected service account token volume.</p>
+<p>Run the following command to check if the workload pod is labeled:</p>
+<pre><code class="language-bash">kubectl get pod quick-start -n oidc -o jsonpath='{.metadata.labels.azure\.workload\.identity/use}'
+</code></pre>
+<details>
+<summary>Output</summary>
+<pre><code class="language-bash">kubectl get pod quick-start -n oidc -o jsonpath='{.metadata.labels.azure\.workload\.identity/use}'
+true
+</code></pre>
+</details>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="faq.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="known-issues.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="faq.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="known-issues.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
